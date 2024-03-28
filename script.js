@@ -1,43 +1,59 @@
 let vrag = [
-  'x', 'x', 'x', 'x', '' , '',  '',  '', '',  '',
-  '',  '',  '',  '',  '' , '',  '',  '', '',  '',
-  '',  '',  '',  '',  '' , '',  'x', '', '',  '',
-  '',  '',  '',  '',  '' , '',  'x', '', '',  '',
-  '',  '',  '',  '',  '' , '',  '',  '', '',  '',
-  '',  '',  '',  '',  '' , '',  '',  '', '',  '',
-  '',  '',  '',  '',  '' , '',  '',  '', '',  '',
-  '',  '',  '',  '',  '' , '',  '',  '', '',  '',
-  '',  '',  '',  '',  '' , '',  '',  '', '',  '',
-  '',  '',  '',  '',  '' , '',  '',  '', '',  '',
+  'x', 'x', 'x', 'x',  '', 'x',  '', 'x',  '', 'x',
+   '',  '',  '',  '',  '', 'x',  '',  '',  '', 'x',
+  'x', 'x', 'x',  '',  '',  '',  '', 'x',  '', 'x',
+   '',  '',  '',  '', 'x',  '',  '',  '',  '',  '',
+   '', 'x', 'x',  '',  '',  '',  '',  '', 'x',  '',
+   '',  '',  '',  '',  '',  '', 'x',  '',  '',  '',
+  'x',  '', 'x', 'x',  '',  '', 'x',  '',  '', 'x',
+  'x',  '',  '',  '',  '',  '', 'x',  '',  '',  '',
+  'x',  '', 'x', 'x', 'x',  '', 'x',  '', 'x',  '',
+  'x',  '',  '',  '',  '',  '', 'x',  '', 'x',  '',
 ]
 
 let user = [
-  '',  '',  '',  '',  '' , '',  '', '',  '',  '',
-  '',  '',  '',  'x', '' , '',  '', '',  '',  '',
-  '',  '',  '',  'x', '' , '',  '', '',  '',  '',
-  '',  '',  '',  'x', '' , '',  '', '',  '',  '',
-  'x', '',  '',  'x', '' , '',  '', '',  '',  '',
-  'x', '',  '',  '',  '' , '',  '', '',  '',  '',
-  'x', '',  '',  '',  '' , '',  '', '',  '',  '',
-  'x', '',  '',  '',  '' , '',  '', '',  '',  '',
-  'x', '',  '',  '',  '' , '',  '', '',  '',  '',
-  '',  '',  '',  '',  '' , '',  '', '',  '',  '',
+ 'x',  '', 'x', 'x', 'x', 'x',  '', 'x',  '', 'x',
+  '',  '',  '',  '',  '',  '',  '',  '',  '', 'x',
+ 'x', 'x', 'x',  '', 'x',  '', 'x', 'x',  '', 'x',
+  '',  '',  '',  '',  '',  '',  '',  '',  '', 'x',
+  '',  '',  '', 'x', 'x', 'x',  '',  '',  '',  '',
+  '', 'x',  '',  '',  '',  '',  '',  '',  '',  '',
+  '', 'x',  '',  '',  '',  '', 'x', 'x',  '', 'x',
+  '', 'x',  '', 'x',  '',  '',  '',  '',  '', 'x',
+  '',  '',  '',  '',  '',  '',  '', 'x',  '',  '',
+  '', 'x', 'x', 'x', 'x', 'x',  '', 'x',  '', 'x',
 ]
 
 // Массив кораблей user
-let korabliUser = [[13,23,33,43], [40,50,60,70,80]]
+let korabliUser = [
+  [0], [2,3,4,5], [7], [9,19,29,39], [20,21,22],
+  [24], [26,27], [43,44,45], [51,61,71], [73],
+  [66,67], [69,79], [91,92,93,94,95], [87,97], [99]
+]
 // Массив кораблей vrag
-let korabliVrag = [[0,1,2,3], [26,36]]
+let korabliVrag = [
+  [0,1,2,3], [5,15], [7], [9,19,29], [20,21,22],
+  [27], [34], [41,42], [48], [56,66,76,86,96],
+  [60,70,80,90], [62,63], [82,83,84], [88,98], [69]
+]
 // Кол-во пототленных кораблей user
 let qKorableyUser = 0;
 // Кол-во пототленных кораблей vrag
 let qKorableyVrag = 0;
 // Отрисовываем кнопки
 let fieldLeft = document.querySelector('.field-left');
+// Отрисовываем кату пользователя
+let fieldRight = document.querySelector('.field-right');
+// Все ячейки поля user
+let allCellUser = fieldRight.getElementsByTagName('div');
+// Все ячейки поля varg
+let allCellVrag = fieldLeft.getElementsByTagName('div')
 // Вкл/Выкл поле user
 let activeFieldUser = true
 // Массив ходов user
 let allShotUser = [];
+// Массив ходов противника
+let allShotVrag = [];
 // Сообщаем что первым ходит user
 document.querySelector('.info').innerHTML = 'ходит: user'
 
@@ -102,9 +118,6 @@ for (let i=0; i<100; i++) {
   }
 }
 
-// Отрисовываем кату
-let fieldRight = document.querySelector('.field-right');
-
 for (let i=0; i<user.length; i++) {
   // Море
   if (user[i] == '') {
@@ -116,9 +129,6 @@ for (let i=0; i<user.length; i++) {
     fieldRight.innerHTML += `<div class="korabl"></div>`;
   }
 }
-
-// Все ячейки поля user
-let allCellUser = fieldRight.getElementsByTagName('div')
 
 // Ход противника
 function attackVrag(i) {
@@ -193,9 +203,6 @@ function attackVrag(i) {
   }, 800)
 }
 
-// Массив ходов противника
-let allShotVrag = []
-
 // Случайное уникальное целое число от 0 до 100
 function rand() {
   let index = Math.floor(Math.random() * 100);
@@ -207,9 +214,6 @@ function rand() {
     return index;
   }
 }
-
-// Все ячейки поля varg
-let allCellVrag = fieldLeft.getElementsByTagName('div')
 
 // Анимация уничтожения корабля
 function animatYnichtozen(indexes, cell) {
@@ -235,12 +239,12 @@ function animatYnichtozen(indexes, cell) {
 function checkPobeda() {
   let fieldDisabled = false
 
-  if (qKorableyUser == 2) {
+  if (qKorableyUser == 15) {
     document.querySelector('.title').innerHTML = 'Морской бой <b style="color: red">- победил vrag!</b>';
     fieldDisabled = true
   }
 
-  if (qKorableyVrag == 2) {
+  if (qKorableyVrag == 15) {
     document.querySelector('.title').innerHTML = 'Морской бой <b style="color: green">- победил user!</b>';
     fieldDisabled = true
   }
