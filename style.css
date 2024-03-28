@@ -1,0 +1,77 @@
+.title, .info {
+  text-align: center;
+}
+
+.display, .start {
+  width: 880px;
+  margin: 0 auto;
+}
+
+.display {
+  display: block;
+}
+
+.start {
+  border: 2px solid red;
+  display: none;
+}
+
+.field-left,
+.field-right {
+  border: 2px solid blue;
+  width: 410px;
+  height: 410px;
+  display: inline-block;
+}
+
+.field-left {
+  margin: 0;
+}
+
+.field-right {
+  margin: 0 20px;
+}
+
+.more, .korabl, .vzriv, 
+.mimo, .miganie {
+  width: 33px;
+  height: 33px;
+  margin: 2px;
+  float: left;
+}
+
+.more {
+  border: 2px solid blue;
+  background: blue;
+}
+
+.korabl {
+  border: 2px solid gray;
+  background: white;
+}
+
+.vzriv {
+  border: 2px solid #F08080;
+  background: #F08080;
+}
+
+.mimo {
+  border: 2px solid rgb(110, 110, 110);
+  background: rgb(110, 110, 110);
+}
+
+.miganie {
+  border: 2px solid #F08080;
+  background: #F08080;
+  animation: blink 0.5s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes blink {
+  0%, 20% {
+    background: #F08080;
+  }
+  10% {
+    background: #F00;
+  }
+}
